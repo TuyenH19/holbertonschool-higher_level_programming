@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def asc():
-    result = ""
+    result = ''
     for i in range(65, 91):
         if i % 2 == 0:
             result += chr(i + 32)
@@ -10,4 +10,4 @@ def asc():
 
 
 result_string = asc()[::-1]
-print(result_string)
+print("{}".format(result_string), end='')
