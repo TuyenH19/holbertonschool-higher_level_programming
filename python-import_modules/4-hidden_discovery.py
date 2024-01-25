@@ -5,4 +5,4 @@ if __name__ == "__main__":
     name_list = dir(hidden_4)
     for name in name_list:
         if name[0] != '_':
-            print("{}".format(name))          
+            print("{}".format(name))
