@@ -3,10 +3,9 @@
 
 
 class Square:
-    """Define class Square"""
+    """Define a square"""
 
     def __init__(self, size=0, position=(0, 0)):
-
         """Constructor"""
         self.size = size
         self.position = position
@@ -21,10 +20,9 @@ class Square:
         """Size setter method to modify the size of the square"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+        self.__size = value
 
     @property
     def position(self):
@@ -34,12 +32,10 @@ class Square:
     @position.setter
     def position(self, value):
         """Position setter to modify the position of the square"""
-        if not isinstance(value, tuple) or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not all(isinstance(x, int)for x in value) or (x < 0 for x in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        else:
-            self.__position = value
+        if not isinstance(value, tuple) or len(value) != 2 \
+            or len([x for x in value if isinstance(x, int) and x >= 0]) != 2:
+            raise TypeError('position must be a tuple of 2 positive integers')
+        self.__position = value
 
     def area(self):
         """Define method Area"""
@@ -47,7 +43,7 @@ class Square:
 
     def my_print(self):
         """Define merthod My_print to print the square"""
-        if self.__size == 0:
+        if not self.__size:
             print("")
         else:
             for i in range(self.__size):
