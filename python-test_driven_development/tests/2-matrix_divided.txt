@@ -41,7 +41,7 @@ Test matrix:
     TypeError: Each row of the matrix must have the same size
 
 Test div:
------------------
+---------
 
     >>> matrix_divided([[2, 4, 6], [8, 10, 12]], 2.2)
     [[0.91, 1.82, 2.73], [3.64, 4.55, 5.45]]
@@ -57,3 +57,16 @@ Test div:
     >>> matrix_divided([[2, 4, 6], [8, 10, 12]], 0)
     Traceback (most recent call last):
     ZeroDivisionError: division by zero
+
+Test inconsistent rows:
+-----------------------
+
+    >>> matrix_divided([[2, 4, 6], [8, 10]], 3)
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+Test type of value return:
+--------------------------
+
+    >>> type(matrix_divided([[1, 2, 3], [4, 5, 6]], 3))
+    <class 'list'>
