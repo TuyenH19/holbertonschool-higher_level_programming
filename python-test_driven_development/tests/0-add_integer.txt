@@ -33,36 +33,31 @@ Test two arguments
     4
 
     >>> add_integer(1.6, 2.2)
-    100
+    3
 
     >>> add_integer(-1.2, -3.8)
-    5
+    -4
 
 Test no-number:
 ---------------
 
     >>> add_integer(2, "hi")
     Traceback (most recent call last):
-    ...
     TypeError: b must be an integer
 
     >>> add_integer("hi", 3)
     Traceback (most recent call last):
-    ...
     TypeError: a must be an integer
 
     >>> add_integer("hello", "there")
     Traceback (most recent call last):
-    ...
     TypeError: a must be an integer
 
     >>> add_integer(0, float('nan'))
     Traceback (most recent call last):
-    ...
-    ValueError: cannot convert float nan to integer
+    ValueError: cannot convert float NaN to integer
 
-     >>> add_integer(float('inf'), 2)
+    >>> add_integer(float('inf'), 2)
     Traceback (most recent call last):
-    ...
     OverflowError: cannot convert float infinity to integer
 
