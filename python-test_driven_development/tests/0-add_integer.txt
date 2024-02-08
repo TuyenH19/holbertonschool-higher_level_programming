@@ -1,0 +1,68 @@
+============================
+0-Integers addition modules
+============================
+
+Import function from module:
+============================
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Function:
+=========
+Write a function that add two Integers
+
+Operations:
+===========
+'a' and 'b' must be an integer or float
+Otherwise, raise a TypeError exception with the message 'a must be an integer' or 'b must be an integer'
+
+
+Test one argument
+-----------------
+
+    >>> add_integer(2)
+    100
+
+Test two arguments
+------------------
+
+    >>> add_integer(10, 5)
+    15
+
+    >>> add_integer(-1, 5)
+    4
+
+    >>> add_integer(1.6, 2.2)
+    100
+
+    >>> add_integer(-1.2, -3.8)
+    5
+
+Test no-number:
+---------------
+
+    >>> add_integer(2, "hi")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+    >>> add_integer("hi", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer("hello", "there")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(0, float('nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float nan to integer
+
+     >>> add_integer(float('inf'), 2)
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
