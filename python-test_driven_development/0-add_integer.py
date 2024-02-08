@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
 Module to add two integers.
-The two arguments must be float or integer, if not raise the TypeError
-The two arguments must be casted to integer before adding, if not raise the TypeError
+The two arguments must be float or integer, if not raise TypeError
+The two arguments must be casted to integer before adding or raise TypeError
 """
 
 
