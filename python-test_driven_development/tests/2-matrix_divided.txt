@@ -1,5 +1,5 @@
 ============================
-0-Divide a matrix modules
+2-Divide a matrix modules
 ============================
 
 Import function from module:
