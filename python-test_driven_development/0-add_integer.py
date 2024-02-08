@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Module to add two integers"""
+"""
+Module to add two integers.
+The two arguments must be float or integer, if not raise the TypeError
+The two arguments must be casted to integer before adding, if not raise the TypeError
+"""
 
 
 def add_integer(a, b=98):
@@ -20,7 +24,3 @@ def add_integer(a, b=98):
     if type(b) not in (int, float):
         raise TypeError("b must be an integer")
     return int(a) + int(b)
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/0-add_integer.txt")
