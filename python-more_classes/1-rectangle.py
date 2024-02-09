@@ -18,8 +18,8 @@ class Rectangle:
             height (int, optional): _description_. Defaults to 0.
         """
 
-        self.__width = width
-        self.__height = height
+        self.height = height
+        self.width = width
 
     @property
     def width(self):
@@ -48,3 +48,4 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+        
