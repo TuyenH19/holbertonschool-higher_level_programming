@@ -20,10 +20,10 @@ Tests cases:
 ------------
 
     >>> text_indentation("""Lorem ipsum dolor sit amet: consectetur adipiscing elit. """)
-    Lorem ipsum dolor sit amet:\
-    \
-    consectetur adipiscing elit.\
-    \
+    Lorem ipsum dolor sit amet:
+    <BLANKLINE>
+    consectetur adipiscing elit.
+    <BLANKLINE>
 
     >>> text_indentation(12)
     Traceback (most recent call last):
