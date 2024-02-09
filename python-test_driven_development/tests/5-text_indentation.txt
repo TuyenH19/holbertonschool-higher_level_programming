@@ -19,11 +19,26 @@ No space at the beginning or end of new lines
 Tests cases:
 ------------
 
+    Normal test
     >>> text_indentation("""Lorem ipsum dolor sit amet: consectetur adipiscing elit. """)
     Lorem ipsum dolor sit amet:
     <BLANKLINE>
     consectetur adipiscing elit.
     <BLANKLINE>
+
+    Argument is empty
+    >>> text_indentation("")
+    
+
+    Argument is a boolean
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    Arguments is a tuple
+    >>> text_indentation(tuple(1, 2))
+    Traceback (most recent call last):
+    TypeError: tuple expected at most 1 argument, got 2
 
     >>> text_indentation(12)
     Traceback (most recent call last):
