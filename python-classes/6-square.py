@@ -4,6 +4,7 @@
 
 class Square:
     """Define a square"""
+    
 
     def __init__(self, size=0, position=(0, 0)):
         """Constructor"""
@@ -42,12 +43,17 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Define merthod My_print to print the square"""
-        if not self.__size:
-            print("")
-        else:
-            for i in range(self.__size):
-                print(self.__position[0] * ' ', end='')
-                for j in range(self.__size):
-                    print("#", end='')
-                print("")
+        """print this square"""
+        result = ""
+        if not self.size:
+            return "\n"
+
+        for i in range(self.position[1]):
+            result += "\n"
+        for i in range(self.size):
+            for j in range(self.position[0]):
+                result += " "
+            for j in range(self.size):
+                result += "#"
+            result += "\n"
+        print(result, end="")
