@@ -11,7 +11,7 @@ Function:
 =========
 Write a function that print a list, but sorted (ascending sort)
 
-    >>> my_list = MyList([])
+    >>> my_list = MyList()
     >>> my_list.print_sorted()
     []
 
