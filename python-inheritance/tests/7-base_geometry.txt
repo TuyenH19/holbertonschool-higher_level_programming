@@ -3,10 +3,16 @@
 ============================
 
 Import module:
-============================
+=============
 
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Correct Class Type test:
+========================
+
     >>> bg = BaseGeometry()
+    >>> type(bg) = BaseGeometry
+    True
 
 Function:
 =========
@@ -62,6 +68,27 @@ Section // TypeError
     Test case with not an class value:
     >>> try:
     ...     bg.integer_validator("name", object)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    Test case with not a tuble value:
+    >>> try:
+    ...     bg.integer_validator("name", (3,))
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    Test case with not a list value:
+    >>> try:
+    ...     bg.integer_validator("name", [3])
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    Test case with not a dictionary value:
+    >>> try:
+    ...     bg.integer_validator("name", {3, 4})
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] name must be an integer
