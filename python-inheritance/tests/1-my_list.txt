@@ -2,14 +2,12 @@
 1-My list modules
 ============================
 
-Import function from module:
-============================
-
-    >>> MyList = __import__('1-my_list').MyList
 
 Function:
 =========
 Write a function that print a list, but sorted (ascending sort)
+
+    >>> MyList = __import__('1-my_list').MyList
 
     >>> my_list = MyList()
     >>> my_list.print_sorted()
