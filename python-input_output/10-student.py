@@ -17,8 +17,8 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """Method retrieves a dictionary representation of a student with filter.
-        
+        """Method retrieves a dictionary represents a student with filter.
+
         If attrs is a list of strings, represent only those attribute.
         Otherwise, all attributes must be retrieved"""
         class_d = self.__dict__
