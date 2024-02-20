@@ -7,7 +7,7 @@ class Base:
     """Represent the base model for all classes in projetc."""
     __nb_objects = 0
     def __init__(self, id=None):
-        """Constructor of a base"""
+        """Constructor of a base class."""
         if id is not None:
             self.id = id
         else:
