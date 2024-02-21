@@ -79,10 +79,6 @@ class Rectangle(Base):
             print('\n' * (self.__y - 1))
         print('\n'.join([" " * self.__x + "#" * self.__width] * self.__height))
 
-    def __str__(self):
-        """Return in format string."""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
-
     def update(self, *args, **kwargs):
         """Update class Rectangle that assign an argument to each attrubute."""
         if args and len(args) > 0:
@@ -108,3 +104,17 @@ class Rectangle(Base):
                     self.__x = value
                 if key == 'y':
                     self.__y = value
+
+    def to_dictionary(self):
+        """Return dictionary representation of a Rectangle."""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }
+
+    def __str__(self):
+        """Return in format string."""
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
