@@ -86,7 +86,7 @@ class Rectangle(Base):
                 self.id = args[0]
             if len(args) >= 2:
                 self.__width = args[1]
-            if len(args) >= 3: 
+            if len(args) >= 3:
                 self.__height = args[2]
             if len(args) >= 4:
                 self.__x = args[3]
@@ -117,4 +117,5 @@ class Rectangle(Base):
 
     def __str__(self):
         """Return in format string."""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - " \
+            f"{self.__width}/{self.__height}"
