@@ -52,12 +52,12 @@ class Rectangle(Base):
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         elif value < 0:
-            raise ValueError("height must be >= 0")
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
     def y(self):
-        """Access the x-coordinate of the rectangle."""
+        """Access the y-coordinate of the rectangle."""
         return self.__y
 
     @y.setter
