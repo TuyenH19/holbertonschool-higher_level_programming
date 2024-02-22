@@ -45,3 +45,6 @@ class Test_Base_Class(unittest.TestCase):
         test_id = 0
         obj = Base(id=test_id)
         self.assertEqual(obj.id, test_id)  # Check if id attribute is initialized correctly
+
+if __name__ == '__main__':
+    unittest.main()
