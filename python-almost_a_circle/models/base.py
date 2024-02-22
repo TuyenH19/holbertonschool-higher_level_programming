@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define a base model class."""
 import json
+import os
 
 
 class Base:
@@ -32,8 +33,9 @@ class Base:
             if list_objs is None:
                 jfile.write("[]")
             else:
-                list_dicts = [o.to_dictionary() for o in list_objs]
-                jfile.write(Base.to_json_string(list_dicts))
+                json_string = \
+                    cls.to_json_string([o.to_dictionary() for o in list_objs])
+                jfile.write(json_string)
 
     @staticmethod
     def from_json_string(json_string):
@@ -42,3 +44,39 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return an instance with all attributes already set."""
+        # Create a "dummy" instance with any mandatory attribute
+        dummy_inst = cls(1, dictionary.get('width'), dictionary.get('height'))
+        # Use update method to assign attributes from dictionary
+        dummy_inst.update(**dictionary)
+        # Return the "dummy" instance
+        return dummy_inst
+
+    def update(self, *args, **kwargs):
+        """Update instance attributes."""
+        if args:
+            # Mention only mandatory attributes
+            attrs = ["id", "width", "height"]
+            for attr, value in zip(attrs, args):
+                setattr(self, attr, value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    @classmethod
+    def load_from_file(cls):
+        """Return a list of instances."""
+        filename = cls.__name__ + ".json"
+        if os.path.exists(filename):  #Check if the file exists
+            with open(filename, "r") as jfile:
+                json_data = jfile.read()
+                if json_data:
+                    list_dicts = cls.from_json_string(json_data)
+                    return [cls.create(**dict_data) for dict_data in list_dicts]
+                else:
+                    return []
+        else:
+            return []
