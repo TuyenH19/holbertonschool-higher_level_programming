@@ -4,7 +4,7 @@ from models.base import Base
 
 if __name__ == "__main__":
 
-    b1 = Base('test')
+    b1 = Base()
     print(b1.id)
 
     b2 = Base()
@@ -18,10 +18,6 @@ if __name__ == "__main__":
 
     b5 = Base()
     print(b5.id)
-    
-    Base._Base__nb_objects = 0
-    b6 = Base()
-    print(b6.id)
 
     """
 guillaume@ubuntu:~/$ ./0-main.py
