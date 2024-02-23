@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Define a base model class."""
 import json
-import os
+from os import path
 
 
 class Base:
@@ -47,37 +47,28 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Return an instance with all attributes already set."""
-        # Create a "dummy" instance with any mandatory attribute
-        dummy_inst = cls(1, dictionary.get('width'), dictionary.get('height'))
-        # Use update method to assign attributes from dictionary
-        dummy_inst.update(**dictionary)
-        # Return the "dummy" instance
-        return dummy_inst
+        if cls.__name__ == 'Square':
+            dummy = cls(3)
 
-    def update(self, *args, **kwargs):
-        """Update instance attributes."""
-        if args:
-            # Mention only mandatory attributes
-            attrs = ["id", "width", "height"]
-            for attr, value in zip(attrs, args):
-                setattr(self, attr, value)
-        else:
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(3, 3)
+
+        dummy.update(**dictionary)
+        return dummy
 
     @classmethod
     def load_from_file(cls):
         """Return a list of instances."""
         filename = cls.__name__ + ".json"
-        # Assuming the file is in the correct directory
-        filepath = os.path.join(".", filename)
-        try:
-            with open(filepath, "r") as jfile:
-                json_data = jfile.read()
-                if json_data:
-                    list_dicts = cls.from_json_string(json_data)
-                    return [cls.create(**dic_data) for dic_data in list_dicts]
-                return []
-        except FileNotFoundError:
+
+        if path.exists(filename) is False:
             return []
+
+        with open(filename, "r") as jfile:
+            objs = cls.from_json_string(jfile.read())
+            instances = []
+
+            for element in objs:
+                instances.append(cls.create(**element))
+
+            return instances
