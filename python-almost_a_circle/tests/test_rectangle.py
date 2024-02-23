@@ -1,59 +1,75 @@
 #!/usr/bin/python3
 """Test Rectangle class."""
-
-
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+
 
 class Test_Rectangle_class(unittest.TestCase):
     """Test cases for Rectangle class."""
 
     def test_constructor_without_id(self):
-        """Test constructor initializes id attrinute when id is NOT provided."""
+        """Test constructor initializes id if it is NOT provided."""
         rect = Rectangle(2, 10)
-        self.assertTrue(hasattr(rect, 'id'))  # check if id attribute is created
-        self.assertIsInstance(rect.id, int)  # Check if id attribute is an integer
-        self.assertIsInstance(rect.width, int)  # Check if width attribute is an integer
-        self.assertIsInstance(rect.height, int)  # Check if height attribute is an integer
-        self.assertNotEqual(rect.id, None)  # Check if id attribute is not None
-        self.assertNotEqual(rect.width, None)  # Check if width attribute is not None
-        self.assertNotEqual(rect.height, None)  # Check if height attribute is not None
-        self.assertEqual(rect.id, Base._Base__nb_objects)  # Check if id is equal to __nb_object
+        # check if id attribute is created
+        self.assertTrue(hasattr(rect, 'id'))
+        # Check if id attribute is an integer
+        self.assertIsInstance(rect.id, int)
+        # Check if width attribute is an integer
+        self.assertIsInstance(rect.width, int)
+        # Check if height attribute is an integer
+        self.assertIsInstance(rect.height, int)
+        # Check if id attribute is not None
+        self.assertNotEqual(rect.id, None)
+        # Check if width attribute is not None
+        self.assertNotEqual(rect.width, None)
+        # Check if height attribute is not None
+        self.assertNotEqual(rect.height, None)
+        # Check if id is equal to __nb_object
+        self.assertEqual(rect.id, Base._Base__nb_objects)
 
     def test_unique_id_generation(self):
         """Test constructor generate unique id for each instance."""
         rect1 = Rectangle(2, 10)
         rect2 = Rectangle(3, 11)
-        self.assertNotEqual(rect1, rect2)  # Check if id of rect1 is equal with id of rect2
+        # Check if id of rect1 is equal with id of rect2
+        self.assertNotEqual(rect1, rect2)
 
     def test_width_error(self):
         """Test if width attribute raise a TypeError and ValueError."""
         with self.assertRaises(TypeError):
-            rect = Rectangle('Text', 1)  # Check if width raise TypeError when set it a string
+            # Check if width raise TypeError when set it a string
+            rect = Rectangle('Text', 1)
         with self.assertRaises(TypeError):
-            rect = Rectangle((1,), 1)  # Check if width raise TypeError when set it a tuple
+            # Check if width raise TypeError when set it a tuple
+            rect = Rectangle((1,), 1)
         with self.assertRaises(ValueError):
-            rect = Rectangle(0, 1)  # Check if width attribute raise an error
+            # Check if width attribute raise an error
+            rect = Rectangle(0, 1)
 
     def test_height_error(self):
         """Test if height attribute raise a TypeError and ValueError."""
         with self.assertRaises(TypeError):
-            rect = Rectangle(1, 'Text')  # Check if height raise TypeError when set it a string
+            # Check if height raise TypeError when set it a string
+            rect = Rectangle(1, 'Text')
         with self.assertRaises(TypeError):
-            rect = Rectangle(1, (1,))  # Check if width raise TypeError when set it a tuple
+            # Check if width raise TypeError when set it a tuple
+            rect = Rectangle(1, (1,))
         with self.assertRaises(ValueError):
-            rect = Rectangle(1, 0)  # Check if height attribute raise an error
+            # Check if height attribute raise an error
+            rect = Rectangle(1, 0)
 
     def test_negative_x(self):
         """Test if x attribute raise a ValueError when set to negative."""
         with self.assertRaises(ValueError):
-            rect = Rectangle(2, 1, -1, 1)  # Check if x attribute raise an error
+            # Check if x attribute raise an error
+            rect = Rectangle(2, 1, -1, 1)
 
     def test_negative_y(self):
         """Test if y attribute raise a ValueError when set to negative."""
         with self.assertRaises(ValueError):
-            rect = Rectangle(2, 1, 1, -1)  # Check if y attribute raise an error
+            # Check if y attribute raise an error
+            rect = Rectangle(2, 1, 1, -1)
 
     def test_update_method_with_args(self):
         """Test update method with args."""
