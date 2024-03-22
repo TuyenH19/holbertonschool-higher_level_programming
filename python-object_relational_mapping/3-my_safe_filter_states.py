@@ -23,7 +23,7 @@ def list_states(username, password, db_name, name_searched):
     user_input = name_searched
     query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
     cur.execute(query, (user_input,))
-    
+
     results = cur.fetchall()
     for row in results:
         print(row)
